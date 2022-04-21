@@ -1,0 +1,32 @@
+<div class="mb-sm">
+  <% if question.hidden? %>
+    <%= link_to "Вопрос #{question.id}", question_path(question), class: 'hidden' %>
+    <div class="mb-sm" hidden>
+      <%= question.body %>
+    </div>
+  <% else %>
+    <%= link_to "Вопрос #{question.id}", question_path(question) %>
+    <div class="mb-sm mt">
+      <%= question.body %>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="text-sm question-footer">
+  <div class="mt text-grey">
+    <%= l(question.created_at, format: :short) %>
+  </div>
+
+  <div>
+    <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Изменить вопрос' %>
+
+    <%= button_to fa_icon('trash-o'), question_path(question), method: :delete,
+                  form: { data: { turbo_confirm: 'Are you sure?' } }, title: 'Удалить вопрос' %>
+
+    <% unless question.hidden? %>
+    <%=  button_to fa_icon('eye-slash'), "/questions/#{question.id}/hide", method: :patch, title: 'Скрыть вопрос',
+                    form: { data: { turbo_confirm: 'Вы хотите скрыть вопрос?' } }  %>
+    <% end %>
+  </div>
+</div>

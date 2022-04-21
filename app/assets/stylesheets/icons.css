@@ -1,0 +1,6 @@
+.fa-eye-slash:before .hidden {
+  color: #a5bcd0;
+}
+.hidden {
+  opacity: 50%;
+}
