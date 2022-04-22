@@ -25,8 +25,8 @@
                   form: { data: { turbo_confirm: 'Вы уверены?' } }, title: 'Удалить вопрос' %>
 
     <% unless question.hidden? %>
-    <%=  button_to fa_icon('eye-slash'), hide_question_path(question.id), method: :patch, title: 'Скрыть вопрос',
-                    form: { data: { turbo_confirm: 'Вы хотите скрыть вопрос?' } }  %>
+      <%= button_to fa_icon('eye-slash'), hide_question_path(question.id), method: :patch, title: 'Скрыть вопрос',
+                    form: { data: { turbo_confirm: 'Вы хотите скрыть вопрос?' } } %>
     <% end %>
   </div>
 </div>
