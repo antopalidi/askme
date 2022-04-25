@@ -11,13 +11,17 @@
 }
 
 .mb-sm {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.6em;
+}
+
+.mr-sm {
+  margin-right: 0.6em;
 }
 
 .mb, .mb-md {
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
 }
 
 .mb-lg {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.75em;
 }

@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="title mb">Регистрируйся</h2>
+  <div class="mt">
+    <%= form_with model: @user do |form| %>
+      <p><%= form.label :name, 'Ваше имя' %></p>
+      <p><%= form.text_field :name, class: 'form-text-field mb' %></p>
+
+      <p><%= form.label :nickname, 'Вашник на сайте' %></p>
+      <p><%= form.text_field :nickname, class: 'form-text-field mb' %></p>
+
+      <p><%= form.label :email %></p>
+      <p><%= form.text_field :email, class: 'form-text-field mb' %></p>
+
+      <p><%= form.label :password %></p>
+      <p><%= form.password_field :password, class: 'form-text-field mb' %></p>
+
+      <p class="mt-lg"><%= form.submit 'Зарегистрироваться', class: 'button button-main' %></p>
+    <% end %>
+  </div>
+</div>
