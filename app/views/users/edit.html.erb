@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title mb">Присоединяйся и спрашивай!</h2>
+  <h2 class="title mb">Редактирование пользователя</h2>
 
   <% if @user.errors.any? %>
     <div class="mt">
@@ -20,13 +20,22 @@
       <p><%= form.label :email %></p>
       <p><%= form.text_field :email, class: 'form-text-field mb' %></p>
 
+      <p class="mt-lg mb text-sm">Если не хотите менять пароль, оставьте это поле пустым</p>
+
       <p><%= form.label :password %></p>
       <p><%= form.password_field :password, class: 'form-text-field mb' %></p>
 
       <p><%= form.label :password_confirmation %></p>
       <p><%= form.password_field :password_confirmation, class: 'form-text-field mb' %></p>
 
-      <p class="mt-lg"><%= form.submit 'Зарегистрироваться', class: 'button button-main' %></p>
+      <p class="mt-lg"><%= form.submit 'Сохранить', class: 'button button-main' %></p>
+      <p class="mt-lg"><%= link_to 'Вернуться', :back %></p>
     <% end %>
+  </div>
+
+  <div class="mt-lg mb">
+    <%= button_to 'Удалить профиль', user_path(@user), method: :delete,
+    form: {data: {turbo_confirm: 'Вы уверены, что хотите удалить свой профиль?'}},
+    class: 'text-red text-sm'%>
   </div>
 </div>

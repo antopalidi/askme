@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     patch :hide, on: :member
   end
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create edit update, destroy]
   resources :session, only: %i[new create destroy]
 end
