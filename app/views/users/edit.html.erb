@@ -1,13 +1,7 @@
 <div class="container">
   <h2 class="title mb">Редактирование пользователя</h2>
 
-  <% if @user.errors.any? %>
-    <div class="mt">
-      <% @user.errors.full_messages.each do |message| %>
-        <p class="mb-sm text-red"><%= message %></p>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render 'shared/errors', object: @user %>
 
   <div class="mt">
     <%= form_with model: @user, data: { turbo: false } do |form| %>
