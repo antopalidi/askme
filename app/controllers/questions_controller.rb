@@ -11,8 +11,6 @@ class QuestionsController < ApplicationController
       flash.now[:alert] = 'При попытке создать вопрос вознилки ошибки!'
       render :new
     end
-
-    # redirect_to question_path(question), notice: 'Новый вопрос создан'
   end
 
   def update
