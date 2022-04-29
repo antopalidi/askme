@@ -1,0 +1,5 @@
+<% if user_setting.present? %>
+  <%= link_to fa_icon('cogs'), edit_setting_path(user_setting), title: 'Edit settings', class: 'title mr' %>
+<% else %>
+  <%= link_to fa_icon('cogs'), new_setting_path, title: 'Add settings', class: 'title mr' %>
+<% end %>

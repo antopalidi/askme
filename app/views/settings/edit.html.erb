@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class="title mb-lg">Изменить настройки сайта</h2>
+
+  <%= render 'form', setting: @setting %>
+
+  <div class="mb">
+    <%= button_to 'Сбросить настройки', setting_path(@setting), method: :delete,
+                  form: { data: { turbo_confirm: 'Вы действительно хотите сбросить настройки?' } }, class: 'text-red text-sm mt' %>
+  </div>
+</div>

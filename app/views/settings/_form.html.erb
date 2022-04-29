@@ -1,0 +1,24 @@
+<div class="mt">
+  <%= form_with model: setting, data: { turbo: false } do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+
+    <div class="form-line">
+      <p class="mb-sm"><%= form.label :header_color, 'Цвет шапки сайта' %></p>
+      <p class="input-color"><%= form.color_field :header_color, value: header_color, class: 'form-color-field mb'
+      %></p>
+    </div>
+
+    <div class="form-line">
+      <p class="mb-sm"><%= form.label :body_color, 'Цвет фона сайта' %></p>
+      <p class="input-color"><%= form.color_field :body_color, value: body_color, class: 'form-color-field mb' %></p>
+    </div>
+
+    <div class="form-line">
+      <p class="mb-sm"><%= form.label :font_size, 'Размер шрифта, %' %></p>
+      <p class="input-num"><%= form.number_field :font_size, in: 50..200, value: font_size, class: 'form-color-field
+      mb' %></p>
+    </div>
+
+    <%= form.submit 'Сохранить', class: 'button button-main' %>
+  <% end %>
+</div>

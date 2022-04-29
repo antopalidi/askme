@@ -10,20 +10,24 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body>
-<div class="wrapper">
-  <menu class="navbar">
-    <p class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></p>
-    <div class="mt mb">
-      <% if current_user.present? %>
-        <%= content_tag 'span', display_nickname(current_user), class: 'mr-sm' %>
-        <%= button_to 'Выйти', session_path(:id), method: :delete %>
-      <% else %>
-        <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow' %>
-        <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
-      <% end %>
-    </div>
-  </menu>
+<body style="background-color: <%= body_color %>">
+<div class="wrapper" style="font-size: <%= "#{ font_size }%" %>">
+  <header class="header" style="background-color: <%= header_color %>">
+    <menu class="navbar" >
+      <h1 class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></h1>
+      <div class="navbar-info mt mb">
+        <% if current_user.present? %>
+          <%= render 'shared/settings' %>
+          <%= content_tag 'span', display_nickname(current_user), class: 'mr' %>
+          <%= button_to 'Выйти', session_path(:id), method: :delete, class: 'button button-yellow' %>
+        <% else %>
+          <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr' %>
+          <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
+        <% end %>
+      </div>
+    </menu>
+  </header>
+
   <% if flash[:notice].present? %>
     <p class="mb mt message message-notice"><%= flash[:notice] %></p>
   <% elsif flash[:alert].present? %>

@@ -14,3 +14,14 @@
   box-sizing: border-box;
   width: 100%;
 }
+.form-line {
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-num input {
+  width: 50px;
+  text-align: end;
+}

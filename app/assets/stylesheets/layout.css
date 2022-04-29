@@ -19,14 +19,19 @@ body {
   padding: 20px;
 }
 
-.navbar {
+.header {
   background-color: #370617;
   color: #fff;
+}
+
+.navbar a,
+.navbar button {
+  color: #fff;
+}
+
+.navbar,
+.navbar-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navbar a {
-  color: #fff;
 }
