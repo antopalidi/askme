@@ -18,7 +18,7 @@
       <div class="navbar-info mt mb">
         <% if current_user.present? %>
           <%= render 'shared/settings' %>
-          <%= content_tag 'span', display_nickname(current_user), class: 'mr' %>
+          <%= link_to display_nickname(current_user), edit_user_path(current_user), class: 'mr' %>
           <%= button_to 'Выйти', session_path(:id), method: :delete, class: 'button button-yellow' %>
         <% else %>
           <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr' %>
