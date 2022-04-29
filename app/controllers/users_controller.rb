@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def new
-    session[:current_time] = Time.now
     @user = User.new
   end
 
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    session.delete(:user_id                                                                                        )
+    session.delete(:user_id)
 
     redirect_to root_path, notice: "Пользователь #{@user.nickname} удален"
   end
