@@ -1,7 +1,5 @@
 <div class="container">
   <h2 class="title-lg mb">Вопрос <%= @question.id %></h2>
-
-  <%= render 'question', question: @question %>
-
+  <%= simple_format @question.body, {}, wrapper_tag: 'p' %>
   <p class="mt"><%= link_to "Все вопросы", questions_path %></p>
 </div>

@@ -2,7 +2,7 @@
   <% div_class = (question.hidden? ? 'translucent' : '') %>
   <%= link_to "Вопрос #{question.id}", question_path(question), class: "#{div_class}" %>
   <div class="mb-sm <%= div_class %>">
-    <%= question.body %>
+    <%= simple_format question.body, {}, wrapper_tag: 'p' %>
   </div>
 </div>
 
