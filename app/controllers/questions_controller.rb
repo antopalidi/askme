@@ -14,9 +14,12 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question.update(question_params)
-
-    redirect_to question_path(@question), notice: 'Вопрос сохранен'
+    if @question.update(question_params)
+      redirect_to root_path, notice: "Вопрос сохранен"
+    else
+      flash.now[:alert] = 'При попытке сохранить вопрос вознилки ошибки!'
+      render :edit
+    end
   end
 
   def destroy

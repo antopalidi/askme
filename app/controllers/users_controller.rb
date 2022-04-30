@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: "#{@user.nickname}, ваши данные обновлены"
     else
-      flash.now[:alert] = 'При попытке сохранить данные вознилки ошиюки!'
+      flash.now[:alert] = 'При попытке сохранить данные вознилки ошибки!'
       render :edit
     end
   end
