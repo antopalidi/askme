@@ -10,14 +10,13 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body style="background-color: <%= body_color %>">
-<div class="wrapper" style="font-size: <%= "#{ font_size }%" %>">
-  <header class="header" style="background-color: <%= header_color %>">
+<body>
+<div class="wrapper">
+  <header class="header" style='background-color: <%= "#{current_user.header_color}" if current_user %>'>
     <menu class="navbar" >
       <h1 class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></h1>
       <div class="navbar-info mt mb">
         <% if current_user.present? %>
-          <%= render 'shared/settings' %>
           <%= link_to display_nickname(current_user), edit_user_path(current_user), class: 'mr' %>
           <%= button_to 'Выйти', session_path(:id), method: :delete, class: 'button button-yellow' %>
         <% else %>

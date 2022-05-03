@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_29_143335) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_03_133743) do
   create_table "questions", force: :cascade do |t|
     t.text "body"
     t.integer "user_id"
@@ -20,16 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_29_143335) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "settings", force: :cascade do |t|
-    t.string "header_color"
-    t.string "body_color"
-    t.string "font_size"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_settings_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "nickname", null: false
@@ -37,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_29_143335) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "header_color", default: "#370617"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end

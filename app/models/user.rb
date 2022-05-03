@@ -7,6 +7,7 @@ class User < ApplicationRecord
             email: { mx_with_fallback: true }
   validates :nickname, presence: true, length: { maximum: 40 }, uniqueness: true,
             format: { with: /\A[a-z\d_]+\z/ }
+  validates :header_color, format: { with: /\A#(?:[\da-zA-Z]{3}){1,2}\z/ }
 
   def downcase_nickname
     nickname.downcase!
