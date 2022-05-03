@@ -1,0 +1,11 @@
+.user-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;justify-content: center;
+  color: #ffffff;
+  background-color: #f48c06;
+}
+
+.user-box a {
+  color: #ffffff;
+}
