@@ -170,7 +170,6 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    redcarpet (3.5.1)
     regexp_parser (2.3.1)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -238,7 +237,6 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
-  redcarpet
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
@@ -247,9 +245,6 @@ DEPENDENCIES
   valid_email
   web-console
   webdrivers
-
-RUBY VERSION
-   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.7

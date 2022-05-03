@@ -1,8 +1,8 @@
 <div class="container">
   <%= render 'shared/errors', object: @question %>
   <h2 class="title-lg mb">Вопрос <%= @question.id %></h2>
-  <div class="text-markdown">
-    <%= markdown(@question.body) %>
+  <div class="">
+    <%= simple_format @question.body, {}, wrapper_tag: 'p' %>
   </div>
   <%= link_to fa_icon('pencil'), edit_question_path(@question), title: 'Изменить вопрос' %>
   <p class="mt"><%= link_to "Все вопросы", questions_path %></p>
