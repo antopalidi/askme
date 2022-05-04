@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :authorize_user, only: %i[edit update destroy]
 
   def new
-    session[:current_time] = Time.now
     @user = User.new
   end
 

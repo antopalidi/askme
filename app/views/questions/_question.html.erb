@@ -1,17 +1,25 @@
-<div class="mb-sm">
-  <% div_class = (question.hidden? ? 'translucent' : '') %>
-  <%= link_to "Вопрос #{question.id}", question_path(question), class: "title-sm #{div_class}" %>
-  <div class="mt mb-sm <%= div_class %>">
-    <%= simple_format "— #{ question.body }", {}, wrapper_tag: 'p' %>
+<% div_class = (question.hidden? ? 'translucent' : '') %>
+
+<div class="mt <%= "#{div_class}" %>">
+  <div class="mb-sm">
+    <% if question.author.present? %>
+      Вопрос от: <%= link_to display_nickname(question.author), user_path(question.author_id),
+                             class: "text-dark-red text-bold" %>
+    <% else %>
+      <p class="text-grey">Anonymous</p>
+    <% end %>
+
+    <div class="mt mb-sm">
+      <%= simple_format "— #{ question.body }", {}, wrapper_tag: 'p' %>
+    </div>
   </div>
+
+  <% if question.answer.present? %>
+    <div class="mb-sm text-dark-red">
+      <%= "— #{question.answer }" %>
+    </div>
+  <% end %>
 </div>
-
-<% if question.answer.present? %>
-  <div class="mb-sm text-dark-red">
-    <%= "— #{question.answer }" %>
-  </div>
-<% end %>
-
 <div class="text-sm question-footer">
   <div class="text-grey">
     <%= l(question.created_at, format: :short) %>
