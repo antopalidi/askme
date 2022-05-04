@@ -33,3 +33,6 @@ a, button {
 .text-bold {
   font-weight: bold;
 }
+.text-dark-red {
+  color: #9D0208;
+}

@@ -1,18 +1,27 @@
 <div class="mb-sm">
   <% div_class = (question.hidden? ? 'translucent' : '') %>
-  <%= link_to "Вопрос #{question.id}", question_path(question), class: "#{div_class}" %>
-  <div class=" mt mb-sm <%= div_class %>">
-    <%= simple_format question.body, {}, wrapper_tag: 'p' %>
+  <%= link_to "Вопрос #{question.id}", question_path(question), class: "title-sm #{div_class}" %>
+  <div class="mt mb-sm <%= div_class %>">
+    <%= simple_format "— #{ question.body }", {}, wrapper_tag: 'p' %>
   </div>
 </div>
+
+<% if question.answer.present? %>
+  <div class="mb-sm text-dark-red">
+    <%= "— #{question.answer }" %>
+  </div>
+<% end %>
+
 <div class="text-sm question-footer">
-  <div class="mt text-grey">
+  <div class="text-grey">
     <%= l(question.created_at, format: :short) %>
   </div>
 
-  <% if current_user == @user %>
+  <% if current_user == question.user %>
     <div>
-      <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Изменить вопрос' %>
+      <% edit_icon = (question.answer.present? ? 'pencil' : 'reply') %>
+      <% edit_icon_title = (question.answer.present? ? 'Изменить вопрос' : 'Ответить') %>
+      <%= link_to fa_icon(edit_icon), edit_question_path(question), title: edit_icon_title, class: 'mr' %>
 
       <%= button_to fa_icon('trash-o'), question_path(question), method: :delete,
                     form: { data: { turbo_confirm: 'Вы уверены?' } }, title: 'Удалить вопрос' %>

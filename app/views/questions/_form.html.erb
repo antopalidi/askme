@@ -1,8 +1,12 @@
 <%= form_with model: question, data: { turbo: false } do |form| %>
   <%= form.hidden_field :user_id %>
   <p><%= form.label :body, 'Текст вопроса' %></p>
-  <p><%= form.text_area :body, size: 'x7', class: 'form-text-area' %></p>
+  <p class="mb"><%= form.text_area :body, size: 'x7', class: 'form-text-area' %></p>
 
+  <% if question.persisted? %>
+    <p><%= form.label :answer, 'Ответ' %></p>
+    <p><%= form.text_area :answer, size: 'x7', class: 'form-text-area' %></p>
+  <% end %>
 
   <p class="mt"><%= form.submit 'Сохранить', class: 'button button-main' %></p>
 <% end %>
