@@ -12,7 +12,7 @@
 
 <body>
 <div class="wrapper">
-  <header class="header" style='background-color: <%= "#{current_user.header_color}" if current_user %>'>
+  <header class="header" style='background-color: <%= current_user&.header_color %>'>
     <menu class="navbar" >
       <h1 class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></h1>
       <div class="navbar-info mt mb">
