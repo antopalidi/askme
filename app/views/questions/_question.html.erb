@@ -21,10 +21,10 @@
     <div>
       <% edit_icon = (question.answer.present? ? 'pencil' : 'reply') %>
       <% edit_icon_title = (question.answer.present? ? 'Изменить вопрос' : 'Ответить') %>
-      <%= link_to fa_icon(edit_icon), edit_question_path(question), title: edit_icon_title, class: 'mr' %>
+      <%= link_to fa_icon(edit_icon), edit_question_path(question), title: edit_icon_title, class: 'mr-sm' %>
 
       <%= button_to fa_icon('trash-o'), question_path(question), method: :delete,
-                    form: { data: { turbo_confirm: 'Вы уверены?' } }, title: 'Удалить вопрос' %>
+                    form: { data: { turbo_confirm: 'Вы уверены?' } }, title: 'Удалить вопрос', class: 'mr-sm' %>
 
       <% unless question.hidden? %>
         <%= button_to fa_icon('eye-slash'), hide_question_path(question.id), method: :patch, title: 'Скрыть вопрос',
