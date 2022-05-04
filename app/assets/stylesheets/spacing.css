@@ -22,6 +22,10 @@
   margin-right: 0.9em;
 }
 
+.ml {
+  margin-left: 0.9em;
+}
+
 .mb, .mb-md {
   margin-bottom: 1em;
 }

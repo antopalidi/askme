@@ -14,3 +14,43 @@
 .user-box a {
   color: #ffffff;
 }
+
+.users-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-box-user {
+  flex-basis: 100px;
+  flex-grow: 0;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.users-box-user a {
+  color: #ffffff;
+}
+
+.users-box-user-bg0 {
+  background: #d00000;
+}
+
+.users-box-user-bg1 {
+  background: #03071E;
+}
+
+.users-box-user-bg2 {
+  background: #ffba08;
+}
+
+.users-box-user-bg3 {
+  background: #6a040f;
+}
+
+.users-box-user-bg4 {
+  background: #f48c06;
+}
