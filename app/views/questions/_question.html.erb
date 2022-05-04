@@ -5,22 +5,22 @@
     <%= simple_format question.body, {}, wrapper_tag: 'p' %>
   </div>
 </div>
-
-
 <div class="text-sm question-footer">
   <div class="mt text-grey">
     <%= l(question.created_at, format: :short) %>
   </div>
 
-  <div>
-    <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Изменить вопрос' %>
+  <% if current_user == @user %>
+    <div>
+      <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Изменить вопрос' %>
 
-    <%= button_to fa_icon('trash-o'), question_path(question), method: :delete,
-                  form: { data: { turbo_confirm: 'Вы уверены?' } }, title: 'Удалить вопрос' %>
+      <%= button_to fa_icon('trash-o'), question_path(question), method: :delete,
+                    form: { data: { turbo_confirm: 'Вы уверены?' } }, title: 'Удалить вопрос' %>
 
-    <% unless question.hidden? %>
-      <%= button_to fa_icon('eye-slash'), hide_question_path(question.id), method: :patch, title: 'Скрыть вопрос',
-                    form: { data: { turbo_confirm: 'Вы хотите скрыть вопрос?' } } %>
-    <% end %>
-  </div>
+      <% unless question.hidden? %>
+        <%= button_to fa_icon('eye-slash'), hide_question_path(question.id), method: :patch, title: 'Скрыть вопрос',
+                      form: { data: { turbo_confirm: 'Вы хотите скрыть вопрос?' } } %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

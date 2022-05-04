@@ -1,7 +1,15 @@
 <div class="container">
   <div class="user-box">
-    <h2 class="title-lg mb-sm mt-lg"><%= @user.name %></h2>
-    <p class="text-bold  mb-lg">@<%= @user.nickname %></p>
+    <h2 class="title-lg mb-sm mt-sm"><%= @user.name %></h2>
+    <div class="user-box-line mb">
+      <p class="text-bold mr">@<%= @user.nickname %></p>
+      <% if current_user == @user %>
+      <p class="">
+        <%= link_to fa_icon('pencil'), edit_user_path(@user) %>
+      </p>
+      <% end %>
+    </div>
+
   </div>
 
   <%= link_to 'Спроси меня', new_question_path(user_id: @user.id), class: 'button button-yellow mt-lg' %>
