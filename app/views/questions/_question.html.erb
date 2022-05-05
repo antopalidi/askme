@@ -5,8 +5,6 @@
     <% if question.author.present? %>
       Вопрос от: <%= link_to display_nickname(question.author), user_path(question.author_id),
                              class: "text-dark-red text-bold" %>
-    <% else %>
-      <p class="text-grey">Anonymous</p>
     <% end %>
 
     <div class="mt mb-sm">
