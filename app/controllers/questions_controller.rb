@@ -48,8 +48,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(user: @user)
   end
 
-  def edit
-  end
+  def edit; end
 
   def hide
     @question.update(hidden: true)

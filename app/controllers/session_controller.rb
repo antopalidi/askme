@@ -1,6 +1,5 @@
 class SessionController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     user_params = params.require(:session)
