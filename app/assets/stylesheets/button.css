@@ -11,6 +11,7 @@
 
 .button-main {
   background-color: #9D0208;
+  cursor: pointer;
 }
 
 .button-yellow {
