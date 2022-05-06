@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize_user, only: %i[edit update destroy]
 
   def new
+    session[:current_time] = Time.now
     @user = User.new
   end
 
@@ -10,6 +11,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
+
       redirect_to root_path, notice: "Welcome, #{@user.nickname}"
     else
       flash.now[:alert] = 'Вы неправильно заполнили поля регистрации!'
@@ -21,9 +24,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+
       redirect_to root_path, notice: "#{@user.nickname}, ваши данные обновлены"
     else
       flash.now[:alert] = 'При попытке сохранить данные вознилки ошибки!'
+
       render :edit
     end
   end
