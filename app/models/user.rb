@@ -12,7 +12,9 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 40 }, uniqueness: true, format: { with: /\A[a-z\d_]+\z/ }
   validates :header_color, format: { with: /\A#(?:[0-9a-fA-F]{3}){1,2}\z/ }
 
+  private
+
   def downcase_nickname
-    nickname.downcase!
+    nickname&.downcase!
   end
 end
