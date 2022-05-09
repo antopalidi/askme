@@ -39,12 +39,12 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc).last(10)
+    @questions = Question.order(created_at: :desc)
     @users = User.order(created_at: :desc).last(10)
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.friendly.find(params[:user_id])
     @question = Question.new(user: @user)
   end
 
