@@ -3,7 +3,7 @@
 <div class="mt <%= "#{div_class}" %>">
   <div class="mb-sm">
     <% if question.author.present? %>
-      Вопрос от: <%= link_to display_nickname(question.author), user_path(question.author_id),
+      Вопрос от: <%= link_to display_nickname(question.author), user_path(question.author),
                              class: "text-dark-red text-bold" %>
     <% else %>
       <p class="text-grey">Anonymous</p>
