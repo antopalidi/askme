@@ -15,6 +15,7 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'valid_email'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
