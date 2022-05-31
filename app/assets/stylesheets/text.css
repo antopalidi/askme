@@ -36,3 +36,13 @@ a, button {
 .text-dark-red {
   color: #9D0208;
 }
+
+.tag {
+  background-color: #a0a0a0;
+  color: #fff;
+  padding: 1px 2px;
+  line-height: 150%;
+  margin: 3px;
+  border-radius: 2px;
+  font-size: 14px;
+}

@@ -5,19 +5,19 @@
     Вопрос от:
     <% if question.author.present? %>
       <%= link_to display_nickname(question.author), user_path(question.author),
-                             class: "text-dark-red text-bold" %>
+                  class: "text-dark-red text-bold" %>
     <% else %>
       <span class="text-grey">Anonymous</span>
     <% end %>
 
     <div class="mt mb-sm">
-      <%= simple_format "— #{ question.body }", {}, wrapper_tag: 'p' %>
+      <%= simple_format tags_with_links("— #{question.body }"), tags: %w(a), attributes: %w(href) , wrapper_tag: 'p' %>
     </div>
   </div>
 
   <% if question.answer.present? %>
     <div class="mb-sm text-dark-red">
-      <%= "— #{question.answer }" %>
+      <%= sanitize tags_with_links("— #{question.answer }"), tags: %w(a), attributes: %w(href) %>
     </div>
   <% end %>
 </div>

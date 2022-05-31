@@ -3,13 +3,14 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[update destroy edit hide]
 
   def create
-    question_params = params.require(:question).permit(:body, :user_id, :author_id, :hide)
+    question_params = params.require(:question).permit(:body, :answer, :user_id, :author_id, :hide)
 
     @question = Question.new(question_params)
     @question.author = current_user
 
     if check_captcha(@question) && @question.save
-      redirect_to user_path(@question.user), notice: "Новый вопрос создан"
+      @question = hashtags_from_body!(@question)
+      redirect_to user_path(@question.user), notice: 'Новый вопрос создан'
     else
       flash.now[:alert] = 'При попытке создать вопрос вознилки ошибки!'
       render :edit
@@ -20,7 +21,8 @@ class QuestionsController < ApplicationController
     question_params = params.require(:question).permit(:body, :answer)
 
     if @question.update(question_params)
-      redirect_to user_path(@question.user), notice: "Вопрос сохранен"
+      @question = hashtags_from_body!(@question)
+      redirect_to user_path(@question.user), notice: 'Вопрос сохранен'
     else
       flash.now[:alert] = 'При попытке сохранить вопрос вознилки ошибки!'
       render :edit
@@ -39,7 +41,8 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc)
+    @hashtags = Hashtag.all
+    @questions = Question.includes(:user, :author, :hashtags).order(created_at: :desc)
     @users = User.order(created_at: :desc).last(10)
   end
 
@@ -68,5 +71,13 @@ class QuestionsController < ApplicationController
 
   def check_captcha(model)
     current_user.present? || verify_recaptcha(model: model)
+  end
+
+  def hashtags_from_body!(question)
+    matches = "#{question.body} #{question.answer}".to_s.downcase.scan(/#[[:word:]-]+/).flatten
+    tags = matches.map { |m| Hashtag.find_or_create_by!(name: m.gsub('#', '')) }
+    question.hashtags << tags.uniq
+    question.save!
+    question
   end
 end

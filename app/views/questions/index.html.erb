@@ -3,7 +3,7 @@
 
   <div class="users-box">
     <% @users.each do |user| %>
-    <%= render partial: 'users/user_avatar', locals: {user: user} %>
+      <%= render partial: 'users/user_avatar', locals: { user: user } %>
     <% end %>
   </div>
 </div>
@@ -14,6 +14,13 @@
     <%= @questions.count %>
     <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
   </h2>
+</div>
+
+<div class="container mt-sm">
+  <h2 class="title-lg mb">Хэштеги</h2>
+  <% @hashtags.each do |hashtag| %>
+    <%= link_to hashtag.name, hashtag_path(hashtag), class: 'tag' %>
+  <% end %>
 </div>
 
 <% @questions.each do |question| %>
