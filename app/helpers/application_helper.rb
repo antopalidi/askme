@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def inclination(count, one, few, many)
     many if (count % 100).between?(11, 14)
 
@@ -12,6 +11,6 @@ module ApplicationHelper
   end
 
   def tags_with_links(text)
-    text.gsub(Hashtag::VALID_HASHTAG_REGEX) { |tag| link_to tag, hashtag_path(tag) }
+    text.gsub(Hashtag::VALID_HASHTAG_REGEX) { |tag| link_to tag, hashtag_path(tag.downcase.delete('#')) }
   end
 end

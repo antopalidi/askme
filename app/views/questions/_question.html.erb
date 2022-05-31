@@ -11,7 +11,8 @@
     <% end %>
 
     <div class="mt mb-sm">
-      <%= simple_format tags_with_links("— #{question.body }"), tags: %w(a), attributes: %w(href) , wrapper_tag: 'p' %>
+      <%= simple_format tags_with_links("— #{question.body }"),
+                        tags: %w(a), attributes: %w(href), wrapper_tag: 'p' %>
     </div>
   </div>
 

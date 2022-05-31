@@ -9,7 +9,6 @@ class QuestionsController < ApplicationController
     @question.author = current_user
 
     if check_captcha(@question) && @question.save
-      @question = hashtags_from_body!(@question)
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан'
     else
       flash.now[:alert] = 'При попытке создать вопрос вознилки ошибки!'
@@ -21,7 +20,6 @@ class QuestionsController < ApplicationController
     question_params = params.require(:question).permit(:body, :answer)
 
     if @question.update(question_params)
-      @question = hashtags_from_body!(@question)
       redirect_to user_path(@question.user), notice: 'Вопрос сохранен'
     else
       flash.now[:alert] = 'При попытке сохранить вопрос вознилки ошибки!'
@@ -42,7 +40,7 @@ class QuestionsController < ApplicationController
 
   def index
     @hashtags = Hashtag.all
-    @questions = Question.includes(:user, :author, :hashtags).order(created_at: :desc)
+    @questions = Question.includes(%i[user author hashtags question_hashtags]).order(created_at: :desc)
     @users = User.order(created_at: :desc).last(10)
   end
 
@@ -71,13 +69,5 @@ class QuestionsController < ApplicationController
 
   def check_captcha(model)
     current_user.present? || verify_recaptcha(model: model)
-  end
-
-  def hashtags_from_body!(question)
-    matches = "#{question.body} #{question.answer}".to_s.downcase.scan(/#[[:word:]-]+/).flatten
-    tags = matches.map { |m| Hashtag.find_or_create_by!(name: m.gsub('#', '')) }
-    question.hashtags << tags.uniq
-    question.save!
-    question
   end
 end

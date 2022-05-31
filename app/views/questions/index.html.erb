@@ -19,7 +19,7 @@
 <div class="container mt-sm">
   <h2 class="title-lg mb">Хэштеги</h2>
   <% @hashtags.each do |hashtag| %>
-    <%= link_to hashtag.name, hashtag_path(hashtag), class: 'tag' %>
+    <%= link_to hashtag.name, hashtag_path(hashtag.name), class: 'tag' %>
   <% end %>
 </div>
 
