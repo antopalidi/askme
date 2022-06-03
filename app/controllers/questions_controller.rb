@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
 
   def index
     @hashtags = Hashtag.with_questions.all
-    @questions = Question.includes(%i[user author hashtags question_hashtags]).order(created_at: :desc)
+    @questions = Question.includes(%i[user author]).order(created_at: :desc)
     @users = User.order(created_at: :desc).last(10)
   end
 

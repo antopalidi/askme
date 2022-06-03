@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def show
     @question = Question.new(user: @user)
-    @questions = @user.questions.order(created_at: :desc)
+    @questions = @user.questions.includes(%i[user author]).order(created_at: :desc)
   end
 
   private

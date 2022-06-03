@@ -74,6 +74,9 @@ GEM
     bootsnap (1.11.1)
       msgpack (~> 1.2)
     builder (3.2.4)
+    bullet (7.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capybara (3.36.0)
       addressable
       matrix
@@ -226,6 +229,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.1)
     unicode-display_width (2.1.0)
+    uniform_notifier (1.16.0)
     valid_email (0.1.4)
       activemodel
       mail (>= 2.6.1)
@@ -255,6 +259,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
+  bullet
   capybara
   debug
   font-awesome-rails
