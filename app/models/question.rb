@@ -9,11 +9,6 @@ class Question < ApplicationRecord
 
   after_save_commit :update_hashtags
 
-  def update_hashtags
-    self.hashtags =
-      question_tags.map { |tag| Hashtag.create_or_find_by(name: tag.delete('#')) }
-  end
-
   private
 
   def question_tags
@@ -23,5 +18,10 @@ class Question < ApplicationRecord
 
   def hashtags_from_text(str)
     str.scan(Hashtag::VALID_HASHTAG_REGEX)
+  end
+
+  def update_hashtags
+    self.hashtags =
+      question_tags.map { |tag| Hashtag.create_or_find_by(name: tag.delete('#')) }
   end
 end
