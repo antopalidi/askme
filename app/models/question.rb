@@ -11,12 +11,12 @@ class Question < ApplicationRecord
 
   def update_hashtags
     self.hashtags =
-      question_hashtags.map { |tag| Hashtag.create_or_find_by(name: tag.delete('#')) }
+      question_tags.map { |tag| Hashtag.create_or_find_by(name: tag.delete('#')) }
   end
 
   private
 
-  def question_hashtags
+  def question_tags
     hashtags = "#{body} #{answer}"
     hashtags_from_text(hashtags.downcase).uniq
   end
