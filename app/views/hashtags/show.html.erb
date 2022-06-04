@@ -1,5 +1,5 @@
 <div class="container">
-  <h2><%= link_to @hashtag.name, hashtag_path(@hashtag) %></h2>
+  <h2 class="title"><%= link_to @hashtag.name, hashtag_path(@hashtag.name) %></h2>
 
   <% @hashtag.questions.each do |question| %>
     <%= render question %>
