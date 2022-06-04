@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  rescue_from ActiveRecord::RecordNotFound, with: :notfound
   helper_method :current_user
 
   private
@@ -10,9 +9,5 @@ class ApplicationController < ActionController::Base
 
   def redirect_with_alert
     redirect_to root_path, alert: "Вам сюда нельзя! Зарегистрируйтесь или войдите"
-  end
-
-  def notfound
-    render file: 'public/404.html', status: :not_found, layout: true
   end
 end
