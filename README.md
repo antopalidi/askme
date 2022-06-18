@@ -20,6 +20,7 @@ Enter the folder
 cd askme
 ```
 
-#### Run: `bundle`, `rails db:migrate`, `rails s`
+#### Run: 
+`bundle`, `rails db:migrate`, `rails s`
 
 deploy: [AskMe](https://shrouded-gorge-27296.herokuapp.com/)
